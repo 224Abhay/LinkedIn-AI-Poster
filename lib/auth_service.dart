@@ -3,13 +3,14 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'storage_service.dart';
-
-const String clientId = '867hx2g8tzi126';
-const String clientSecret = 'WPL_AP1.IphjYGLJZN6W4cJI.L7WqmQ==';
-const String redirectUri = 'http://localhost:8000/callback';
-const String scope = 'w_member_social profile email openid';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AuthService {
+  static final String clientId = dotenv.env['CLIENT_ID'] ?? '';
+  static final String clientSecret = dotenv.env['CLIENT_SECRET'] ?? '';
+  static final String redirectUri = dotenv.env['REDIRECT_URI'] ?? '';
+  static final String scope = dotenv.env['SCOPE'] ?? '';
+  
   static Future<void> loginWithLinkedIn(Function(String) onAuthComplete) async {
     final authUrl =
         Uri.parse('https://www.linkedin.com/oauth/v2/authorization?response_type=code'

@@ -4,17 +4,13 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-String openAiApiKey = '';
-
 class PostService {
+  static String openAiApiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
+
   static Future<String?> generatePostContent(String title,
       {String? userContext}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? generalKnowledge = prefs.getString('knowledge');
-    if (openAiApiKey == '') {
-      await dotenv.load();
-      openAiApiKey = dotenv.env['OPENAI_API_KEY'] ?? 'API_KEY_NOT_FOUND';
-    }
 
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'),
