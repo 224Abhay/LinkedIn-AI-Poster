@@ -13,7 +13,7 @@ class LinkedInAutoPoster extends StatefulWidget {
     this.accessToken,
     this.context, {
     Key? key, // Accept Key as a parameter
-  }) : super(key: key); // Pass key to super constructor
+  }) : super(key: key); 
 
   @override
   _LinkedInAutoPosterState createState() => _LinkedInAutoPosterState();

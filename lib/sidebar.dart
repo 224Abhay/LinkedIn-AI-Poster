@@ -7,12 +7,12 @@ import 'storage_service.dart';
 class Sidebar extends StatefulWidget {
   final Map<String, dynamic> accounts;
   final Function(String) switchAccount;
-  final VoidCallback refreshHomeScreen; // Add this
+  final VoidCallback refreshHomeScreen;
 
   const Sidebar({
     required this.accounts,
     required this.switchAccount,
-    required this.refreshHomeScreen, // Add this
+    required this.refreshHomeScreen,
   });
 
   @override
